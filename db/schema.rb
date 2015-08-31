@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831193316) do
+ActiveRecord::Schema.define(version: 20150831215714) do
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "email",                         null: false
+    t.string   "password_digest",               null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "perishable_token", default: "", null: false
   end
+
+  add_index "users", ["perishable_token"], name: "index_users_on_perishable_token"
 
 end

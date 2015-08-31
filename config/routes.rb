@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   resources :users
   root 'welcome#index'
   resources :sessions
+
+  resources :password_resets, only: [ :new, :create]
+
+  get '/password_resets/edit' => 'password_resets#edit', as: :edit_password_reset
+  put '/password_resets/' => 'password_resets#update', as: :password_reset
+
+
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
